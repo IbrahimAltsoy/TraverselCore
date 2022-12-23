@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concreate
 {
-    public class NewsLetter:IEntity
+    public interface IEntity
     {
-        public Guid Id { get; set; }
-        public string Email { get; set; }
+        Guid Id { get; set; }
     }
 }

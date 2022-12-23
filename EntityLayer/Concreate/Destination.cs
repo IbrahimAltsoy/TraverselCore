@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concreate
 {
-    public class Destination
+    public class Destination:IEntity
     {
         public Guid Id { get; set; }
         public string City { get; set; }

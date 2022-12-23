@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concreate
 {
-    public class FeatureMin
+    public class FeatureMin:IEntity
     {
 
         public Guid Id { get; set; }
