@@ -10,17 +10,18 @@ namespace TraverselCore.ViewComponents.Default
 
     public class _TestimonialPartial:ViewComponent
     {
-        private readonly IService<SubAbout> _service;
+        private readonly IService<Testimonial> _service;
 
-        public _TestimonialPartial(IService<SubAbout> service)
+        public _TestimonialPartial(IService<Testimonial> service)
         {
             this._service = service;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            //var model = await _service.GetAllAsync();
-            return View();
+            var model = await _service.GetAllAsync();
+            var model2 = model.Take(4).ToList();
+            return View(model2);
         }
 
     }
