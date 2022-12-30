@@ -13,7 +13,7 @@ namespace TraverselCore.ViewComponents.Default
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            //var model = await _service.GetAllAsync(i=>i.Price>3000);
+            //var model = await _service.GetAllAsync(i => i.Price > 3000);
             //return View(model.Take(5));
             var model = await _service.GetAllAsync();
 
