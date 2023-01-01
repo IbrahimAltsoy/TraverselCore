@@ -17,8 +17,10 @@ namespace TraverselCore.ViewComponents.Yorumlar
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-           
+            
             return View();
+
+
         }
 
 

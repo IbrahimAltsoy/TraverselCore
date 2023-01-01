@@ -13,25 +13,15 @@ namespace TraverselCore.ViewComponents.Yorumlar
             this._service = service;
             this._service1 = service1;
         }
-        public async Task<IViewComponentResult> InvokeAsync()
+        [HttpGet]
+        public async Task<IViewComponentResult> InvokeAsync(Guid id)
         {
-            //var model1 = await _service.FindAsync(id);
-
-            //var model2 = await _service1.FindAsync(id);
-
-            //if (model2.DestinationId==model1.Id)
-            //{
-            //    return View(model2);
-            //}
-            //else
-            //{
-            //    return View();
-            //}
-            return View();
+            var model = await _service.FindAsync(id);
             
+            var model1 = await _service1.GetAllAsync(x=>x.DestinationId==id);
+           
+            return View(model1);
 
-
-            
         }
 
 

@@ -24,6 +24,7 @@ namespace TraverselCore.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(Guid id)
         {
+            ViewBag.x= id;
             var model = await _service.FindAsync(id);
                        
             return View(model);

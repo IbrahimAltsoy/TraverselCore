@@ -1,6 +1,9 @@
-﻿@*@model IEnumerable<EntityLayer.Concreate.Comment>*@
+﻿@using EntityLayer.Concreate
+@model IEnumerable<EntityLayer.Concreate.Comment>
 <div class="comments mt-5">
     <h4 class="side-title ">Merhaba (2222)</h4>
+     @foreach(var item in Model)
+            {
     <div class="media mt-4">
         <div class="img-circle">
             <img src="~/Traversal-Liberty/assets/images/c1.jpg" class="img-fluid" alt="...">
@@ -9,8 +12,8 @@
 
             <ul class="time-rply mb-2">
                 <li>
-                    <a href="#URL" class="name mt-0 mb-2 d-block">William Jack</a>
-                    June 15th, 2020 - 10:02 pm
+                    <a href="#URL" class="name mt-0 mb-2 d-block">@item.User</a>
+                    @item.DateTime
 
                 </li>
                 <li class="reply-last">
@@ -19,16 +22,15 @@
                     </a>
                 </li>
             </ul>
-            @*@foreach(var item in Model)
-            {
-                @item.User
-            }*@
+           
+                
+                
+            
             <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat, hic
-                reprehenderit eum cupiditate deleniti, Lorem ipsum dolor sit amet consectetur adipisicing.....
+              @item.Content
             </p>
         </div>
     </div>
-
+    }
    
 </div>
