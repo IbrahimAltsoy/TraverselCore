@@ -16,16 +16,20 @@ namespace TraverselCore.Controllers
         public async Task<IActionResult> Index()
         {
             var model =await _service.GetAllAsync();
+           
             return View(model);
         }
         [HttpGet]
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(Guid id)
         {
-            return View();
+            var model = await _service.FindAsync(id);
+                       
+            return View(model);
         }
         [HttpPost]
         public IActionResult Details(Destination destination)
         {
+
             return View();
         }
     }

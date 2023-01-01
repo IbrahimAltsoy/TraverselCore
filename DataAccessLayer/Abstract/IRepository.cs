@@ -13,13 +13,14 @@ namespace DataAccessLayer.Abstract
     {
         List<T> GetAll(Expression<Func<T, bool>> expression); // Get metodunda entity frazmework x=>x. şeklinde yaptığımız lamda experesion larınını kullabilmek için 
         T Get(Expression<Func<T, bool>> expression);// Özel sorgu kullanarak 1 tane kayıt getiren metot imzası 
-        T Find(int id);
+        T Find(Guid id);
         int Add(T entity);
         void Update(T entity);
         void Delete(T entity);
         int SaveChanges();
         // Asekron metotlar
-        Task<T> FindAsync(int id);
+        Task<T> FindAsync(Guid id);
+        //Task<T> FindStringAsync(string id);
         Task<T> FirstOfDefaultAsync(Expression<Func<T, bool>> expression);
         IQueryable<T> FindAllAsync(Expression<Func<T, bool>> expression);
         Task<List<T>> GetAllAsync();

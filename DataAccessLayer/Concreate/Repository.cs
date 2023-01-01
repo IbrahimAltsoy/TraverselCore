@@ -36,7 +36,7 @@ namespace DataAccessLayer.Concreate
             context.Remove(entity);
         }
 
-        public T Find(int id)
+        public T Find(Guid id)
         {
             return dbSet.Find(id);
         }
@@ -46,10 +46,17 @@ namespace DataAccessLayer.Concreate
             return dbSet.Include(expression);
         }
 
-        public async Task<T> FindAsync(int id)
+        public async Task<T> FindAsync(Guid id)
         {
             return await dbSet.FindAsync(id);
         }
+        //public async Task<T> FindStringAsync(string id)
+        //{
+        //    return await dbSet.FindAsync(id);
+        //}
+
+
+
 
         public async Task<T> FirstOfDefaultAsync(Expression<Func<T, bool>> expression)
         {
