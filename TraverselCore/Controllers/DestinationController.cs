@@ -7,10 +7,12 @@ namespace TraverselCore.Controllers
     public class DestinationController : Controller
     {
         private readonly IService<Destination> _service;
+        private readonly IService<Comment> service1;
 
-        public DestinationController(IService<Destination> service)
+        public DestinationController(IService<Destination> service, IService<Comment> service1)
         {
             this._service = service;
+            this.service1 = service1;
         }
 
         public async Task<IActionResult> Index()

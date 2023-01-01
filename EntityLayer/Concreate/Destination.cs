@@ -21,5 +21,9 @@ namespace EntityLayer.Concreate
         public string DetailsOne { get; set; }
         public string DetailsTwo { get; set; }
         public string ImageTwo { get; set; }
+       
+
+        public List<Comment> Comments { get; set; }
+
     }
 }

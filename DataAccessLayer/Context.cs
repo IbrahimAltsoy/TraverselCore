@@ -21,6 +21,7 @@ namespace DataAccessLayer
         public DbSet<NewsLetter> NewsLetters { get; set; }
         public DbSet<SubAbout> Subabouts { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
+        public DbSet<Comment> Comments { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=DESKTOP-O97PCTN\\SQLEXPRESS;Database=TravelCore;Trusted_Connection=True;TrustServerCertificate=True");
