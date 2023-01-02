@@ -82,7 +82,7 @@
                 <div class="single-post-content">
                     <p class="alphabet mb-4">
                         <span class="big-letter">A</span>
-                        @Model.DetailsOne
+                       @* @Model.DetailsOne*@
                     </p>
                    
 
@@ -190,7 +190,7 @@
                     <!--//author-card-->
 
                 @await Component.InvokeAsync("_Yorum", new{id=ViewBag.x})
-                @await Component.InvokeAsync("_YorumEkle")
+                @await Html.PartialAsync("~/Views/Comment/AddComment.cshtml")
 
                   
 
