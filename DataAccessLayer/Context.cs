@@ -26,7 +26,7 @@ namespace DataAccessLayer
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=DESKTOP-O97PCTN\\SQLEXPRESS;Database=TravelCore;Trusted_Connection=True;TrustServerCertificate=True");
-
+            
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
