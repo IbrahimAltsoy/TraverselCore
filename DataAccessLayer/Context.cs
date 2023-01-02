@@ -1,4 +1,5 @@
 ﻿using EntityLayer.Concreate;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class Context : DbContext
+    public class Context : IdentityDbContext<AppUser, AppRole, Guid>
     {
 
         public DbSet<About> Abouts { get; set; }
@@ -29,6 +30,7 @@ namespace DataAccessLayer
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
