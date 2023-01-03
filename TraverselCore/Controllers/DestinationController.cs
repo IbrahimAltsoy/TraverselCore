@@ -1,10 +1,12 @@
 ﻿using BusiinessLayer.Abstract;
 using EntityLayer.Concreate;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TraverselCore.Controllers
 {
-    public class DestinationController : Controller
+	[Authorize]
+	public class DestinationController : Controller
     {
         private readonly IService<Destination> _service;
         private readonly IService<Comment> service1;
