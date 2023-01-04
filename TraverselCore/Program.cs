@@ -23,23 +23,7 @@ builder.Services.AddIdentity<AppUser, AppRole>(option =>
     option.Password.RequireUppercase = false;
 })
 	.AddRoleManager<RoleManager<AppRole>>().AddEntityFrameworkStores<Context>().AddDefaultTokenProviders();
-//builder.Services.ConfigureApplicationCookie(config =>
-//{
-//	config.LoginPath = new PathString("/Login/SignUp");
-//	//config.LogoutPath = new PathString("/Login/SignUp");
-//	//config.Cookie = new CookieBuilder
-//	//{
-//	//	Name = "MyBlog",
-//	//	HttpOnly = true,
-//	//	SameSite = SameSiteMode.Strict,
-//	//	SecurePolicy = CookieSecurePolicy.SameAsRequest
 
-//	//};
-//	//config.SlidingExpiration = true;
-//	//config.ExpireTimeSpan = TimeSpan.FromDays(7);
-//	//config.AccessDeniedPath = new PathString("/Login/SignUp");
-//});
-//// burada bitiyor 
 
 var app = builder.Build();
 
