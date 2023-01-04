@@ -36,5 +36,13 @@ namespace TraverselCore.Models
                 Description = "Şifre en az bir .,*? gibi karakter içermelidir"
             };
         }
+        public override IdentityError PasswordRequiresDigit()
+        {
+            return new IdentityError()
+            {
+                Code = "PasswordRequiresDigit",
+                Description = "Şifre en az bir sayı karakter içermelidir"
+            };
+        }
     }
 }
