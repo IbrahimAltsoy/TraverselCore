@@ -70,7 +70,7 @@
 							<input type="text" asp-for="UserName" />
 							<span asp-validation-for="UserName" class="text-danger"></span>
 						</div>
-						<div class="form-input">
+						@*<div class="form-input">
 							<label>Gender</label>
 							<input type="text" asp-for="Gender" />
 							<span asp-validation-for="Gender" class="text-danger"></span>
@@ -79,7 +79,7 @@
 							<label>Image</label>
 							<input type="text" asp-for="ImageUrl" />
 							<span asp-validation-for="ImageUrl" class="text-danger"></span>
-						</div>
+						</div>*@
 						<div class="form-input">
 							<label>Email</label>
 							<input type="email" asp-for="Email" />
@@ -95,7 +95,9 @@
 							<input type="password" asp-for="ConfirmPassword" />
 							<span asp-validation-for="ConfirmPassword" class="text-danger"></span>
 						</div>
+                        <div class="text-danger" asp-validation-summary="ModelOnly">
 
+						</div>
 						<label class="container">
 							I agree to <a href="#">Conditions</a> of Use and <a href="#">Privacy</a>
 							<input type="checkbox">

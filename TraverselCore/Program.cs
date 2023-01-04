@@ -6,6 +6,7 @@ using DataAccessLayer.Concreate;
 using EntityLayer.Concreate;
 using Microsoft.AspNetCore.Identity;
 using System;
+using TraverselCore.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,11 +19,11 @@ builder.Services.AddTransient(typeof(IService<>), typeof(Service<>));
 //Identity yapýlandýrmasý 
 builder.Services.AddIdentity<AppUser, AppRole>(option =>
 {
-	option.Password.RequireNonAlphanumeric = false;
-	option.Password.RequireLowercase = false;
-    option.Password.RequireUppercase = false;
+	option.Password.RequireNonAlphanumeric = true;
+	option.Password.RequireLowercase = true;
+    option.Password.RequireUppercase = true;
 })
-	.AddRoleManager<RoleManager<AppRole>>().AddEntityFrameworkStores<Context>().AddDefaultTokenProviders();
+	.AddRoleManager<RoleManager<AppRole>>().AddEntityFrameworkStores<Context>().AddDefaultTokenProviders().AddErrorDescriber<CustomIdentityValidator>();
 
 
 var app = builder.Build();

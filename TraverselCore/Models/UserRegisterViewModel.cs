@@ -14,10 +14,10 @@ namespace TraverselCore.Models
 		public string UserName { get; set; }
 		// buradan başladı
 		[Required(ErrorMessage = "Lütfen Cinsiyetinizi giriniz.")]
-		public string Gender { get; set; }
+		public string? Gender { get; set; }
 
 		[Required(ErrorMessage = "Lütfen Cinsiyetinizi giriniz.")]
-		public string ImageUrl { get; set; }
+		public string? ImageUrl { get; set; }
 		// buraya kadar sonradan eklendi
 
 		[Required(ErrorMessage = "Lütfen mail adresinizi giriniz.")]
