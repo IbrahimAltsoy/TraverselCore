@@ -6,6 +6,7 @@ using TraverselCore.Models;
 
 namespace TraverselCore.Controllers
 {
+    
     [AllowAnonymous]
     public class LoginController : Controller
     {
@@ -58,15 +59,55 @@ namespace TraverselCore.Controllers
 
 			return View(appUser);
 		}
+        // Giriş işlemleri
         [HttpGet]
-        public IActionResult SignIn()
+        public IActionResult Login()
         {
             return View();
         }
-        //[HttpPost]
-        //public IActionResult SignIn()
+
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> Login(UserSignInViewModel signInViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await userManager.FindByEmailAsync(signInViewModel.Email);
+                if (user != null)
+                {
+                    var result = await signInManager.PasswordSignInAsync(user, signInViewModel.Password, false, true);
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("Index", "Destination", new { Area = "Member" });
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Kullanıcı adınız veya şifreniz yanlış girilmiştir.");
+                        return View();
+                    }
+                }
+                else
+                {
+
+                    ModelState.AddModelError("", "Kullanıcı adınız veya şifreniz yanlış girilmiştir.");
+                    return View();
+                }
+
+            }
+            else
+            {
+                return View();
+
+            }
+
+        }
+        //[Authorize]
+        //[HttpGet]
+        //public async Task<IActionResult> Logout()
         //{
-        //    return View();
+        //    await signInManager.SignOutAsync();
+
+        //    return RedirectToAction("Index", "Home", new { Area = "" });
         //}
 
     }
