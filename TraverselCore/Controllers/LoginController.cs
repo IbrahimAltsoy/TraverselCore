@@ -83,7 +83,7 @@ namespace TraverselCore.Controllers
                     if (result.Succeeded)
                     {
 						
-						return RedirectToAction("Index", "Destination" , new { Area = "Member" });
+						return RedirectToAction("Index", "Profil" , new { Area = "Member" });
 
                         
                     }
