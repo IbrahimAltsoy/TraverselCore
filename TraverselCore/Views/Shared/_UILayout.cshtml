@@ -18,6 +18,7 @@
             @RenderBody()
         <partial name="/Views/LayoutPartial/_FooterPartial.cshtml">
         <partial name="/Views/LayoutPartial/_ScriptPartial.cshtml">
+                    @await Component.InvokeAsync("NToastNotify");
     </body>
 
 </html>

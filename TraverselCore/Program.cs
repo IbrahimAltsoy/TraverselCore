@@ -5,6 +5,7 @@ using DataAccessLayer.Abstract;
 using DataAccessLayer.Concreate;
 using EntityLayer.Concreate;
 using Microsoft.AspNetCore.Identity;
+using NToastNotify;
 using System;
 using TraverselCore.Models;
 
@@ -12,7 +13,20 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 //builder.Services.AddDbContext<Context>();
-builder.Services.AddControllersWithViews();
+//builder.Services.AddControllersWithViews()
+//    .AddNToastNotifyToastr(new ToastrOptions()
+//    {
+//        PositionClass = ToastPositions.TopRight,
+//        TimeOut = 3000
+
+//    });
+builder.Services.AddControllersWithViews()
+    .AddNToastNotifyToastr(new ToastrOptions()
+    {
+        PositionClass = ToastPositions.TopRight,
+        TimeOut = 3000
+
+    });
 builder.Services.AddDbContext<Context>();
 builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddTransient(typeof(IService<>), typeof(Service<>));
@@ -35,7 +49,7 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
+app.UseNToastNotify();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

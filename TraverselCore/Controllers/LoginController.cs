@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using NToastNotify;
 using TraverselCore.Models;
+using static TraverselCore.ToastrMessage.ToastrMessage;
 
 namespace TraverselCore.Controllers
 {
@@ -12,12 +14,14 @@ namespace TraverselCore.Controllers
     {
 		private readonly UserManager<AppUser> userManager;
 		private readonly SignInManager<AppUser> signInManager;
+        private readonly IToastNotification toastNotification;
 
-		public LoginController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        public LoginController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IToastNotification toastNotification)
 		{
 			this.userManager = userManager;
 			this.signInManager = signInManager;
-		}
+            this.toastNotification = toastNotification;
+        }
 		[HttpGet]
         public IActionResult SignUp()
         {
@@ -78,16 +82,29 @@ namespace TraverselCore.Controllers
                     var result = await signInManager.PasswordSignInAsync(user, signInViewModel.Password, false, true);
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Index", "Destination", new { Area = "Member" });
+						
+						return RedirectToAction("Index", "Destination" , new { Area = "Member" });
+
+                        
                     }
                     else
                     {
+                        toastNotification.AddErrorToastMessage(MessajeToastr.ToastrLoginUnSuccesfull(user.UserName),
+                       new ToastrOptions
+                       {
+                           Title = "Başarısız!!!"
+                       });
                         ModelState.AddModelError("", "Kullanıcı adınız veya şifreniz yanlış girilmiştir.");
                         return View();
                     }
                 }
                 else
                 {
+                    toastNotification.AddErrorToastMessage(MessajeToastr.ToastrLoginUnSuccesfull(user.UserName),
+                       new ToastrOptions
+                       {
+                           Title = "Başarısız!!!"
+                       });
 
                     ModelState.AddModelError("", "Kullanıcı adınız veya şifreniz yanlış girilmiştir.");
                     return View();
