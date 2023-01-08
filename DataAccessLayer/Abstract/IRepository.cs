@@ -12,6 +12,7 @@ namespace DataAccessLayer.Abstract
 
     {
         List<T> GetAll(Expression<Func<T, bool>> expression); // Get metodunda entity frazmework x=>x. şeklinde yaptığımız lamda experesion larınını kullabilmek için 
+        List<T> GetAll(); // ekledin bekle
         T Get(Expression<Func<T, bool>> expression);// Özel sorgu kullanarak 1 tane kayıt getiren metot imzası 
         T Find(Guid id);
         int Add(T entity);

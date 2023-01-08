@@ -14,6 +14,7 @@ namespace TraverselCore.Controllers
     {
 		private readonly UserManager<AppUser> userManager;
 		private readonly SignInManager<AppUser> signInManager;
+      
         private readonly IToastNotification toastNotification;
 
         public LoginController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IToastNotification toastNotification)
