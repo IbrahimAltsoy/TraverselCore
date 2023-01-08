@@ -25,6 +25,10 @@ namespace TraverselCore.Areas.Member.Controllers
         {
             return View();
         }
+        public IActionResult MyAprovalREservation()
+        {
+            return View();
+        }
         [HttpGet]
         public IActionResult NewReservation()
         {
