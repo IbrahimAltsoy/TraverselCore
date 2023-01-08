@@ -5,7 +5,7 @@
 }
 
 <h1>Index</h1>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     @Html.Label("Adınız: ")
     <input type="text" asp-for="Name" class="form-control" />
     <br />
@@ -16,7 +16,7 @@
     <input type="text" asp-for="PhoneNumber" class="form-control" />
     <br />
     @Html.Label("Foto: ")
-    <input type="text" asp-for="ImageUrl" class="form-control" />
+    <input type="file" asp-for="Image" class="form-control" />
     <br />
     @Html.Label("Email: ")
     <input type="text" asp-for="Email" class="form-control" />
@@ -27,4 +27,5 @@
     @Html.Label("Şifre Tekrar: ")
     <input type="password" asp-for="ConfirmPassword" class="form-control" />
     <br />
+    <input type="submit" value="Kaydet" class="btn btn-primary" />
 </form>
