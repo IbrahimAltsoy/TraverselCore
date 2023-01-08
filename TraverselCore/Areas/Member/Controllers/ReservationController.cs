@@ -1,5 +1,6 @@
 ﻿using BusiinessLayer.Abstract;
 using EntityLayer.Concreate;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -10,11 +11,12 @@ namespace TraverselCore.Areas.Member.Controllers
     {
         private readonly IService<Destination> _destinationService;
         private readonly IService<Reservation> _reservationService;
-       
-        public ReservationController(IService<Destination> destinationService, IService<Reservation> serviceReservation)
+        private readonly UserManager<AppUser> _userManager;
+        public ReservationController(IService<Destination> destinationService, IService<Reservation> serviceReservation, UserManager<AppUser> userManager)
         {
             this._destinationService = destinationService;
             this._reservationService = serviceReservation;
+            this._userManager = userManager;
         }
 
         public IActionResult MyCurrentReservation()
@@ -25,8 +27,10 @@ namespace TraverselCore.Areas.Member.Controllers
         {
             return View();
         }
-        public IActionResult MyAprovalREservation()
+        public async Task<IActionResult> MyAprovalReservation()
         {
+            var model = await _userManager.FindByNameAsync(User.Identity.Name);
+            ViewBag.v = model.Id;
             return View();
         }
         [HttpGet]
