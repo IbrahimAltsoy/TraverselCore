@@ -30,8 +30,8 @@ namespace TraverselCore.Areas.Member.Controllers
         public async Task<IActionResult> MyAprovalReservation()
         {
             var model = await _userManager.FindByNameAsync(User.Identity.Name);
-            ViewBag.v = model.Id;
-            return View();
+            var modelList= _reservationService.GetAll(r=>r.AppUserId==model.Id);
+            return View(modelList);
         }
         [HttpGet]
         public IActionResult NewReservation()

@@ -18,5 +18,7 @@ namespace EntityLayer.Concreate
         public Guid AppUserId { get; set; }
         public AppUser appUser { get; set; }
 
+        //enum StatuDurumu { Onaylanmış, Bekliyor, Başvurusuz };
     }
+    
 }
