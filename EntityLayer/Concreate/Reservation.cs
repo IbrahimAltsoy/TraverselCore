@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static EntityLayer.Concreate.EnumStatu;
 
 namespace EntityLayer.Concreate
 {
@@ -10,15 +11,18 @@ namespace EntityLayer.Concreate
     {
         public Guid Id { get; set; }
         public int PersonCount { get; set; }
-        public string Destination { get; set; }
+        //public string Destination { get; set; }
         public DateTime ReservationDate { get; set; }
         public string DEscription { get; set; }
-        public string Status { get; set; }
+         public StatuDurumu? Status { get; set; }
        
         public Guid AppUserId { get; set; }
+        public Guid DestinationId { get; set; }
+        
         public AppUser appUser { get; set; }
+        public Destination Destination { get; set; }
 
-        //enum StatuDurumu { Onaylanmış, Bekliyor, Başvurusuz };
+        
     }
     
 }

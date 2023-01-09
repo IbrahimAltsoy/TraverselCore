@@ -28,6 +28,6 @@ namespace DataAccessLayer.Abstract
         Task<List<T>> GetAllAsync(Expression<Func<T, bool>> expression);
         Task AddAsync(T entity);
         Task<int> SaveChangesAsync();
-
+        List<Reservation> GetListWithReservationByWaitApproal(Guid id);
     }
 }

@@ -10,6 +10,7 @@
     <tr>
        
         <th>Lokasyon</th>
+        <th>Şehir</th>
         <th>Kişi sayısı</th>
         <th>Rezervasyon Tarihi</th>
         <th>Durum</th>
@@ -18,6 +19,8 @@
     {
         <tr>
             <td>@item.DEscription</td>
+            <td>@item.Destination.City</td>
+
             <td>@item.PersonCount</td>
             <td>@item.ReservationDate.ToShortDateString()</td>
             <td>@item.Status</td>

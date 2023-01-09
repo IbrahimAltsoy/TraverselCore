@@ -50,6 +50,7 @@ namespace DataAccessLayer.Concreate
         {
             return await dbSet.FindAsync(id);
         }
+         
         //public async Task<T> FindStringAsync(string id)
         //{
         //    return await dbSet.FindAsync(id);
@@ -102,6 +103,10 @@ namespace DataAccessLayer.Concreate
         public void Update(T entity)
         {
             context.Update(entity);
+        }
+        public List<Reservation> GetListWithReservationByWaitApproal(Guid id)
+        {
+            return context.Reservations.Include(x => x.Destination).Where(x => x.Status == EnumStatu.StatuDurumu.Bekliyor && x.AppUserId == id).ToList();
         }
     }
 }
