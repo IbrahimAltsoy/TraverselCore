@@ -39,7 +39,8 @@ namespace TraverselCore.Areas.Member.Controllers
 
             // (r => r.AppUserId == model.Id && r.Status == EnumStatu.StatuDurumu.Bekliyor); bunun yerine model.Id yazdık
             var model = await _userManager.FindByNameAsync(User.Identity.Name);
-            var modelList = _reservationService.GetListWithReservationByWaitApproal(model.Id);
+             var modelList = _reservationService.GetListWithReservationByWaitApproal(model.Id);
+
             return View(modelList);
         }
         [HttpGet]

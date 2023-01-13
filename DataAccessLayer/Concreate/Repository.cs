@@ -107,6 +107,7 @@ namespace DataAccessLayer.Concreate
         public List<Reservation> GetListWithReservationByWaitApproal(Guid id)
         {
             return context.Reservations.Include(x => x.Destination).Where(x => x.Status == EnumStatu.StatuDurumu.Bekliyor && x.AppUserId == id).ToList();
+            //return (context.Reservations.Include(x=>x.Destination).Where(x=>x.Status==EnumStatu.StatuDurumu.Bekliyor && x.AppUserId==id).ToList());
         }
     }
 }
