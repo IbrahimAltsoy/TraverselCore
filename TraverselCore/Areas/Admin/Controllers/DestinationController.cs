@@ -2,7 +2,7 @@
 using EntityLayer.Concreate;
 using Microsoft.AspNetCore.Mvc;
 
-namespace TraverselCore.Areas.Admin
+namespace TraverselCore.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class DestinationController : Controller
@@ -14,7 +14,7 @@ namespace TraverselCore.Areas.Admin
             _service1 = service1;
         }
         [HttpGet]
-        public async  Task<IActionResult> Index()
+        public async Task<IActionResult> Index()
         {
             var model = await _service1.GetAllAsync();
             return View(model);
@@ -29,12 +29,12 @@ namespace TraverselCore.Areas.Admin
         {
             destination.Statu = true;
             await _service1.AddAsync(destination);
-            
+
             await _service1.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
         }
-        
+
         [HttpGet]
         public IActionResult UpdateDestination(Guid id)
         {
@@ -52,11 +52,11 @@ namespace TraverselCore.Areas.Admin
         [HttpGet]
         public IActionResult DeleteDestination(Guid id)
         {
-            var model =_service1.Find(id);
+            var model = _service1.Find(id);
             _service1.Delete(model);
             _service1.SaveChanges();
             return View();
         }
-        
+
     }
 }
