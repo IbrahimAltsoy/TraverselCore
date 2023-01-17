@@ -29,6 +29,7 @@ namespace DataAccessLayer.Concreate
         public async Task AddAsync(T entity)
         {
             await context.AddAsync(entity);
+            //await SaveChangesAsync();
         }
 
         public void Delete(T entity)

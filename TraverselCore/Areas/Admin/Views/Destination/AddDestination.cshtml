@@ -1,0 +1,78 @@
+﻿@model EntityLayer.Concreate.Destination
+
+@{
+    ViewData["Title"] = "AddDestination";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Yeni Rota oluşturma sayfasına hoşgeldiniz</h1>
+
+<h4>Rotalar</h4>
+<hr />
+<form method="post">
+    
+    <div class="form-group">
+        @Html.Label("Şehir bilgisi giriniz")
+        <input type="text" asp-for="City" class="form-control"/>
+
+    </div>
+    <div class="form-group">
+        @Html.Label("Fiyat Bilgisini Giriniz")
+        <input type="text" asp-for="Price" class="form-control" />
+
+    </div>
+    <div class="form-group">
+        @Html.Label("Fiyat Bilgisini Giriniz")
+        <input type="date" asp-for="DayNight" class="form-control" />
+
+    </div>
+    <div class="form-group">
+        @Html.Label("Kapasite giriniz")
+        <input type="text" asp-for="Capacity" class="form-control" />
+
+    </div>
+    <div class="form-group">
+        @Html.Label("Görsel Giriniz")
+        <input type="text" asp-for="Image" class="form-control" />
+
+    </div>
+    <div class="form-group">
+        @Html.Label("Açıklama giriniz")
+        <textarea type="text" asp-for="Description" class="form-control" > </textarea>
+
+    </div>
+    @*<div class="form-group">
+        @Html.Label("Statu durumu giriniz")
+        <input type="checkbox" asp-for="Statu" class="form-control" />
+
+    </div>*@
+    <div class="form-group">
+        @Html.Label("Görsel Giriniz")
+        <input type="text" asp-for="ImageTwo" class="form-control" />
+
+    </div>
+    <div class="form-group">
+        @Html.Label("Görsel Giriniz")
+        <input type="text" asp-for="CoverImage" class="form-control" />
+
+    </div>
+    <div class="form-group">
+        @Html.Label("Görsel Giriniz")
+        <input type="text" asp-for="Image" class="form-control" />
+
+    </div>
+    <div class="form-group">
+        @Html.Label("Detay 1 giriniz")
+        <textarea type="text" asp-for="DetailsOne" class="form-control"> </textarea>
+
+    </div>
+    <div class="form-group">
+        @Html.Label("Detay 2 giriniz")
+        <textarea type="text" asp-for="DetailsTwo" class="form-control"> </textarea>
+
+    </div>
+    
+
+    <button class="btn btn-primary">Kaydet</button>
+</form>
+
