@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Comment>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var count = 0;
+}
+
+<h1>Yorum Sayfasına Hoşgeldiniz</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>No</th>
+        <th>Kullanıcı</th>
+        <th>Rota</th>
+        <th>Tarih</th>
+        <th>Sil</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+
+        <tr>
+            <td>@count</td>
+            <td>@item.User</td>
+            <td>@item.Destination.City</td>
+            <td>@(((DateTime)item.DateTime).ToString("dd-MMM-yyyy"))</td>
+
+            <td><a class="btn btn-outline-danger" href="/Admin/Comment/DeleteComment/@item.Id">Sil</a></td>
+        </tr>
+    }
+    
+</table>
+@*<script>
+    function clicked(e) {
+        if (!confirm('Silmek istediğinden emin misin?')) {
+            e.preventDefault();
+        }
+    }
+</script>
+onclick="return confirm('Silmek istediğinden emin misin?')"*@

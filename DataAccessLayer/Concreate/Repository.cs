@@ -35,6 +35,8 @@ namespace DataAccessLayer.Concreate
         public void Delete(T entity)
         {
             context.Remove(entity);
+            //context.SaveChanges();
+             
         }
 
         public T Find(Guid id)
