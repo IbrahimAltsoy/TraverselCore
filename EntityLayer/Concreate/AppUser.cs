@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concreate
 {
-    public class AppUser : IdentityUser<Guid>
+    public class AppUser : IdentityUser<Guid>, IEntity // burası daha sonra IEntity olrak tanımlanmıştır bilgine hata oluşturursa silersin. Admin-UserController için oluşturuldu. çalıştı şimdilik hata vermedi ileriki kısmında problem çıkarmazsa hep kalsın çıkartırsa silersin
     {
         public string? ImageUrl { get; set; }
         public string Name { get; set; }

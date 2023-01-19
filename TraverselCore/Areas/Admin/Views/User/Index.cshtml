@@ -1,0 +1,95 @@
+﻿@model IEnumerable<EntityLayer.Concreate.AppUser>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            @*<th>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+
+            <th>
+                Sil
+            </th>
+            <th>
+                Düzenle
+            </th>
+            <th>
+                Yorumlar
+            </th>
+            <th>
+                Tur Geçmişi
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @* <td>
+            @Html.DisplayFor(modelItem => item.ImageUrl)
+            </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+
+                <td>
+                    <a href="/Admin/User/DeleteUser/@item.Id" class="btn btn-outline-danger">Sil</a>
+
+
+                </td>
+                <td>
+                    <a href="/Admin/User/EditUser/@item.Id" class="btn btn-outline-success">Düzenle</a>
+                </td>
+                <td>
+                    <a href="/Admin/User/CommentUser/@item.Id" class="btn btn-outline-info">Yorumlar</a>
+
+
+                </td>
+                <td>
+                    <a href="/Admin/User/ReservationUser/@item.Id" class="btn btn-outline-secondary">Tur Geçmişi</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Login/SignUp/" class="btn btn-primary py-2">Yeni Kullanıcı</a>

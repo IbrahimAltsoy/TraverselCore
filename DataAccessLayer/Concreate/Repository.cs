@@ -115,6 +115,11 @@ namespace DataAccessLayer.Concreate
             return context.Reservations.Include(x => x.Destination).Where(x => x.Status == EnumStatu.StatuDurumu.Bekliyor && x.AppUserId == id).ToList();
             //return (context.Reservations.Include(x=>x.Destination).Where(x=>x.Status==EnumStatu.StatuDurumu.Bekliyor && x.AppUserId==id).ToList());
         }
+        public List<Reservation> GetListWithReservationByapproved(Guid id)
+        {
+            return context.Reservations.Include(x => x.Destination).Where(x => x.Status == EnumStatu.StatuDurumu.Onaylanmış && x.AppUserId == id).ToList();
+            //return (context.Reservations.Include(x=>x.Destination).Where(x=>x.Status==EnumStatu.StatuDurumu.Bekliyor && x.AppUserId==id).ToList());
+        }
     }
 }
 

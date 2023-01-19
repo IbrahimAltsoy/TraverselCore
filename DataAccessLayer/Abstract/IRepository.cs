@@ -29,6 +29,6 @@ namespace DataAccessLayer.Abstract
         Task AddAsync(T entity);
         Task<int> SaveChangesAsync();
         List<Reservation> GetListWithReservationByWaitApproal(Guid id);
-       
+        List<Reservation> GetListWithReservationByapproved(Guid id);
     }
 }

@@ -49,7 +49,7 @@ namespace TraverselCore.Controllers
                 var result = await userManager.CreateAsync(user, appUser.Password);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("SignIn");
+                    return RedirectToAction("/Login/Login/");
                 }
                 else
                 {
