@@ -15,7 +15,7 @@ namespace DataAccessLayer.Abstract
         List<T> GetAll(); // ekledin bekle
         T Get(Expression<Func<T, bool>> expression);// Özel sorgu kullanarak 1 tane kayıt getiren metot imzası 
         T Find(Guid id);
-        int Add(T entity);
+        void Add(T entity);
         void Update(T entity);
         void Delete(T entity);
         int SaveChanges();

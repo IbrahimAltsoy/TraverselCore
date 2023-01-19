@@ -45,9 +45,11 @@ namespace TraverselCore.Areas.Admin.Controllers
         public IActionResult UpdateDestination(Destination destination)
         {
             _service1.Update(destination);
+           
             _service1.SaveChanges();
 
-            return RedirectToAction(nameof(Index));
+
+            return Redirect("/Admin/Destination/Index/");
         }
         [HttpGet]
         public IActionResult DeleteDestination(Guid id)

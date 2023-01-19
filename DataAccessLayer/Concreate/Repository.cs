@@ -20,10 +20,10 @@ namespace DataAccessLayer.Concreate
             context = _context;
             dbSet = context.Set<T>(); // boş dbset i context içindeki ilgili class ın db seti için ayarladık
         }
-        public int Add(T entity)
+        public void Add(T entity)
         {
             dbSet.Add(entity);
-            return SaveChanges();
+            SaveChanges();
         }
 
         public async Task AddAsync(T entity)
@@ -102,7 +102,10 @@ namespace DataAccessLayer.Concreate
         {
             return await context.SaveChangesAsync();
         }
-
+        //public async Task<int> SaveChangesAsync()
+        //{
+        //    return await context.SaveChangesAsync();
+        //}
         public void Update(T entity)
         {
             context.Update(entity);
