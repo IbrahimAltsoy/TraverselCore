@@ -1,6 +1,8 @@
 ﻿using BusiinessLayer.Abstract;
 using EntityLayer.Concreate;
 using Microsoft.AspNetCore.Mvc;
+using NToastNotify;
+using static TraverselCore.ToastrMessage.ToastrMessage;
 
 namespace TraverselCore.Areas.Admin.Controllers
 {
@@ -8,10 +10,12 @@ namespace TraverselCore.Areas.Admin.Controllers
     public class DestinationController : Controller
     {
         private readonly IService<Destination> _service1;
+        private readonly IToastNotification toastNotification;       
 
-        public DestinationController(IService<Destination> service1)
+        public DestinationController(IService<Destination> service1, IToastNotification toastNotification)
         {
             _service1 = service1;
+            this.toastNotification = toastNotification;
         }
         [HttpGet]
         public async Task<IActionResult> Index()
@@ -31,8 +35,12 @@ namespace TraverselCore.Areas.Admin.Controllers
             await _service1.AddAsync(destination);
 
             await _service1.SaveChangesAsync();
-
-            return RedirectToAction(nameof(Index));
+            toastNotification.AddSuccessToastMessage(MessajeToastr.ToastrAddSuccesfull(destination.City),
+                                   new ToastrOptions
+                                   {
+                                       Title = "Başarılı!!!"
+                                   });
+            return Redirect("/Admin/Destination/Index/");
         }
 
         [HttpGet]
@@ -47,17 +55,27 @@ namespace TraverselCore.Areas.Admin.Controllers
             _service1.Update(destination);
            
             _service1.SaveChanges();
-
+            toastNotification.AddSuccessToastMessage(MessajeToastr.ToastrUpdateSuccesfull(destination.City),
+                                   new ToastrOptions
+                                   {
+                                       Title = "Başarılı!!!"
+                                   });
 
             return Redirect("/Admin/Destination/Index/");
         }
+        
         [HttpGet]
-        public IActionResult DeleteDestination(Guid id)
+        public IActionResult DeleteDestination(Guid id,Destination destination)
         {
-            var model = _service1.Find(id);
-            _service1.Delete(model);
+            toastNotification.AddSuccessToastMessage(MessajeToastr.ToastrDeleteSuccessful(destination.City),
+                                   new ToastrOptions
+                                   {
+                                       Title = "Başarılı!!!"
+                                   });
+            _service1.Delete(destination);
             _service1.SaveChanges();
-            return View();
+            
+            return Redirect("/Admin/Destination/Index/");
         }
 
     }

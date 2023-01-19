@@ -26,22 +26,3 @@ namespace TraverselCore.Controllers
         }
     }
 }
-//
-//public class BrandsController : Controller
-//{
-//    private readonly IService<Brand> _service; // veritabanı işlemleri için generic olarak tasarladığımız repository sınıfını kullanan service interface ini brand class ı için kullanılmak üzere tanımladık.
-
-//    public BrandsController(IService<Brand> service)
-//    {
-//        _service = service;
-//    }
-
-//    // GET: BrandsController
-//    public async Task<IActionResult> Index()
-//    {
-//        var model = await _service.GetAllAsync();
-
-
-//        return View(model);
-//    }
-//}

@@ -23,7 +23,7 @@
             <td>@item.Price</td>
             <td>@item.Capacity</td>
             <td><a href="/Destination/Details/@item.Id" class="btn btn-outline-info">Sitede Gör</a></td>
-            <td><a href="/Admin/Destination/DeleteDestination/@item.Id" class="btn btn-outline-danger">Sil</a></td>
+            <td><a href="/Admin/Destination/DeleteDestination/@item.Id" class="btn btn-outline-danger" onclick="return confirm('Silmek istediğinden emin misin?')">Sil</a></td>
             <td><a href="/Admin/Destination/UpdateDestination/@item.Id" class="btn btn-outline-success">Güncelle</a></td>
            
           
@@ -33,3 +33,10 @@
 </table>
 <a href="/Admin/Destination/AddDestination" class="btn btn-primary">Rota Ekle</a>
 
+ <script>
+       function clicked(e) {
+            if (!confirm('Güncellemek istediğinden emin misin?')) {
+                e.preventDefault();
+            }
+        }
+    </script>
