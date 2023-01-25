@@ -11,15 +11,7 @@ using TraverselCore.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-//builder.Services.AddDbContext<Context>();
-//builder.Services.AddControllersWithViews()
-//    .AddNToastNotifyToastr(new ToastrOptions()
-//    {
-//        PositionClass = ToastPositions.TopRight,
-//        TimeOut = 3000
 
-//    });
 builder.Services.AddControllersWithViews()
     .AddNToastNotifyToastr(new ToastrOptions()
     {
@@ -27,6 +19,16 @@ builder.Services.AddControllersWithViews()
         TimeOut = 3000
 
     });
+// Burasý Logger iþlemi için yapýldý. 
+builder.Services.AddLogging(x =>
+{
+    x.ClearProviders();
+    x.SetMinimumLevel(LogLevel.Debug);
+    x.AddDebug();
+
+});
+// Logger iþlemlerini burada bitirdik. 
+
 builder.Services.AddDbContext<Context>();
 
 builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));

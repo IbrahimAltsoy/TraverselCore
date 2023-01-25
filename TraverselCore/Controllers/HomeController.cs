@@ -15,14 +15,20 @@ namespace TraverselCore.Controllers
 
         public IActionResult Index()
         {
+            _logger.LogInformation("Anasayfa çağrıldı");
             return View();
         }
 
         public IActionResult Privacy()
         {
+            _logger.LogInformation($"{nameof(Privacy)} Çağrıldı");
             return View();
         }
-
+        public IActionResult Deneme() 
+        { 
+            _logger.LogInformation("Deneme sayfası çağrıldı");
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
