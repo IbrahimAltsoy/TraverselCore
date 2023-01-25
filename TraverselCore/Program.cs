@@ -27,6 +27,7 @@ builder.Services.AddLogging(x =>
     x.AddDebug();
 
 });
+
 // Logger iþlemlerini burada bitirdik. 
 
 builder.Services.AddDbContext<Context>();
@@ -46,13 +47,20 @@ builder.Services.AddIdentity<AppUser, AppRole>(option =>
 
 var app = builder.Build();
 
+ILoggerFactory loggerFactory = new LoggerFactory();
+
+var path = Directory.GetCurrentDirectory();
+loggerFactory.AddFile($"{path}\\Logs\\Log1.txt");
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    
     app.UseHsts();
 }
+
 
 app.UseStatusCodePagesWithReExecute("/ErrorPage/ErrorNumber", "?code={0}");// adres çubuðunda tanýmsýz adresler girildiðinde yönlendirileceði yeri belirtiyoruz. 
 app.UseNToastNotify();
