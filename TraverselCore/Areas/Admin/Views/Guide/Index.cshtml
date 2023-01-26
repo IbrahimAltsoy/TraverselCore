@@ -4,7 +4,11 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     var count = 0;
 }
-
+@*<style>
+    img{
+        border-radius:50%;
+    }
+</style>*@
 <h1>Rehber Listesi Sayfasına Hoşgeldiniz</h1>
 
 <table class="table table-bordered">
@@ -22,7 +26,7 @@
         count++;
         <tr>
             <th>@count</th>
-            <th><img src="@item.Image" height="50"/></th>
+            <th><img src="@item.Image" height="50" style="border-radius:50%"/></th>
             <th>@item.Name</th>
             <th>@item.Description</th>
             @{

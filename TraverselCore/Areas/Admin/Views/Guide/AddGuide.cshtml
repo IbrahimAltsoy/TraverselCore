@@ -5,52 +5,39 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>AddGuide</h1>
+<h1>Yeni Rehber Oluşturma Sayfasına Hoşgeldiniz</h1>
 
-<h4>Guide</h4>
+<h4>Yeni Rehber</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="AddGuide">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TwitterUrl" class="control-label"></label>
-                <input asp-for="TwitterUrl" class="form-control" />
-                <span asp-validation-for="TwitterUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="InstagramUrl" class="control-label"></label>
-                <input asp-for="InstagramUrl" class="form-control" />
-                <span asp-validation-for="InstagramUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Statu" /> @Html.DisplayNameFor(model => model.Statu)
-                </label>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Ekle" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+<form method="post">
 
-<div>
-    <a asp-action="Index">Listeye Dön</a>
-</div>
+    <div class="form-group">
+        @Html.Label("Ad soyad")
+        <input type="text" asp-for="Name" class="form-control" />
+
+    </div>
+    <div class="form-group">
+        @Html.Label("Resim Bilgisi")
+        <input type="text" asp-for="Image" class="form-control" />
+
+    </div>
+    <div class="form-group">
+        @Html.Label("Instagram Hesabı")
+        <input type="text" asp-for="InstagramUrl" class="form-control" />
+
+    </div>
+    <div class="form-group">
+        @Html.Label("Twitter Hesabı")
+        <input type="text" asp-for="TwitterUrl" class="form-control" />
+
+    </div>   
+   
+    <div class="form-group">
+        @Html.Label("Açıklama kısmı")
+        <textarea type="text" asp-for="Description" class="form-control"> </textarea>
+
+    </div>
+    
+    <button class="btn btn-primary">Kaydet</button>
+</form>
 
