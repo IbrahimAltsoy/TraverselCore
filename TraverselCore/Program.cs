@@ -6,6 +6,8 @@ using DataAccessLayer.Concreate;
 using EntityLayer.Concreate;
 using Microsoft.AspNetCore.Identity;
 using NToastNotify;
+using Serilog;
+using Serilog.Core;
 using System;
 using TraverselCore.Models;
 
@@ -19,16 +21,15 @@ builder.Services.AddControllersWithViews()
         TimeOut = 3000
 
     });
-// Burasý Logger iþlemi için yapýldý. 
-builder.Services.AddLogging(x =>
-{
-    x.ClearProviders();
-    x.SetMinimumLevel(LogLevel.Debug);
-    x.AddDebug();
+// Buradan balýyor
 
-});
+Logger log = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File("Logs/log.txt")
+    .CreateLogger();
+builder.Host.UseSerilog(log);
 
-// Logger iþlemlerini burada bitirdik. 
+// burada bitiyor
 
 builder.Services.AddDbContext<Context>();
 
@@ -47,10 +48,7 @@ builder.Services.AddIdentity<AppUser, AppRole>(option =>
 
 var app = builder.Build();
 
-ILoggerFactory loggerFactory = new LoggerFactory();
 
-var path = Directory.GetCurrentDirectory();
-loggerFactory.AddFile($"{path}\\Logs\\Log1.txt");
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
