@@ -1,5 +1,8 @@
 ﻿using BusiinessLayer.Abstract;
+using BusiinessLayer.ValidationRules;
 using EntityLayer.Concreate;
+using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TraverselCore.Areas.Admin.Controllers
@@ -16,6 +19,7 @@ namespace TraverselCore.Areas.Admin.Controllers
 
         public async Task<IActionResult> IndexAsync()
         {
+            
             var model = await _guideService.GetAllAsync();
             return View(model);
         }
@@ -27,9 +31,24 @@ namespace TraverselCore.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> AddGuide(Guide guide)
         {
-            await _guideService.AddAsync(guide);
-            await _guideService.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            GuideValidator validationRules = new GuideValidator();
+            ValidationResult result = validationRules.Validate(guide);
+            if (result.IsValid)
+            {
+                await _guideService.AddAsync(guide);
+                await _guideService.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                foreach(var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
+            
+           
         }
 
 
