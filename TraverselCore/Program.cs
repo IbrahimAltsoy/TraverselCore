@@ -36,6 +36,8 @@ builder.Services.AddDbContext<Context>();
 builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddTransient(typeof(IService<>), typeof(Service<>));
 builder.Services.AddTransient(typeof(ICommentService), typeof(CommentService));
+builder.Services.AddTransient(typeof(IExcelService), typeof(ExcelService));//Excel servisi içðin ekledik
+builder.Services.AddTransient(typeof(IPdfReportService), typeof(PdfReportService));// Pdf servisi için inþa ettik
 //Identity yapýlandýrmasý 
 builder.Services.AddIdentity<AppUser, AppRole>(option =>
 {

@@ -10,7 +10,7 @@ namespace BusiinessLayer.Abstract
 {
     public interface IService<T>: IRepository<T> where T : class, IEntity, new() 
     {
-
+        
     }
     
 }

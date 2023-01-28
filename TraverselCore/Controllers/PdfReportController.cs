@@ -43,16 +43,16 @@ namespace TraverselCore.Controllers
             pdfPTable.AddCell("Misafir TC");
 
             pdfPTable.AddCell("Ibrahim");
-            pdfPTable.AddCell("altsoy");
-            pdfPTable.AddCell("11111111110");
+            pdfPTable.AddCell("Altsoy");
+            pdfPTable.AddCell("11111111111");
 
             pdfPTable.AddCell("Erkan");
-            pdfPTable.AddCell("işbilir");
+            pdfPTable.AddCell("İşbilir");
             pdfPTable.AddCell("22222222222");
 
             pdfPTable.AddCell("Fuat");
-            pdfPTable.AddCell("bucak");
-            pdfPTable.AddCell("44444444445");
+            pdfPTable.AddCell("Bucak");
+            pdfPTable.AddCell("33333333333");
 
             document.Add(pdfPTable);
 

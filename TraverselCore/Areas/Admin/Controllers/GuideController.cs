@@ -50,6 +50,27 @@ namespace TraverselCore.Areas.Admin.Controllers
             
            
         }
+        [HttpGet]
+        public IActionResult Edit(Guid id)
+        {
+            var model =_guideService.Find(id);
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult Edit(Guide guide)
+        {
+            _guideService.Update(guide);
+            _guideService.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+        public IActionResult ChangeToTrue()
+        {
+            return View();
+        }
+        public IActionResult ChangeToFalse()
+        {
+            return View();
+        }
 
 
     }
