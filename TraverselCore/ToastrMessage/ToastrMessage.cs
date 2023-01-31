@@ -34,6 +34,10 @@
             {
                 return $"{title} başlıklı içerik başarıyla silindi!!!";
             }
+            public static string ToastrMailSuccessful(string title)
+            {
+                return $"{title} başlıklı içerik başarıyla mail gönderildi!!!";
+            }
         }
     }
 }
