@@ -30,5 +30,6 @@ namespace DataAccessLayer.Abstract
         Task<int> SaveChangesAsync();
         List<Reservation> GetListWithReservationByWaitApproal(Guid id);
         List<Reservation> GetListWithReservationByapproved(Guid id);
+        Task<Guide> GuidesstatuChangeToTrue(Guid id);
     }
 }

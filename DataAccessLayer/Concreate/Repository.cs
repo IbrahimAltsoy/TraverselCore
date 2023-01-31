@@ -1,6 +1,7 @@
 ﻿using DataAccessLayer.Abstract;
 using EntityLayer.Concreate;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -119,6 +120,21 @@ namespace DataAccessLayer.Concreate
         {
             return context.Reservations.Include(x => x.Destination).Where(x => x.Status == EnumStatu.StatuDurumu.Onaylanmış && x.AppUserId == id).ToList();
             //return (context.Reservations.Include(x=>x.Destination).Where(x=>x.Status==EnumStatu.StatuDurumu.Bekliyor && x.AppUserId==id).ToList());
+        }
+        public async Task<Guide> GuidesstatuChangeToTrue(Guid id)
+        {
+            var model = await context.Guides.FindAsync(id);
+            if (model.Statu==true)
+            {
+                model.Statu = false;
+            }
+            else
+            {
+                model.Statu = true;
+            }
+            context.SaveChangesAsync();
+            return model;
+           
         }
     }
 }
