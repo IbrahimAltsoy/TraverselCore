@@ -132,7 +132,7 @@ namespace DataAccessLayer.Concreate
             {
                 model.Statu = true;
             }
-            context.SaveChangesAsync();
+            await context.SaveChangesAsync(); // Burası değişti await ekledik olması gerekendi hata oluştururssa silersin
             return model;
            
         }

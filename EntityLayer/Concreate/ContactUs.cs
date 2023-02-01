@@ -14,5 +14,6 @@ namespace EntityLayer.Concreate
         public string Subject { get; set; }
         public string MessageBody { get; set; }
         public DateTime MessageDate { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

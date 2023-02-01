@@ -1,0 +1,56 @@
+﻿@model List<ContactUs>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int number = 0;
+}
+
+<h1>Bize Ulaşan Mesaj Sayfasına Hoşgeldiniz.</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Ad Soyad</th>
+        <th>Mail</th>
+        <th>Konu</th>
+        <th>Mesaj İçeriği</th>
+        <th>Tarih</th>
+        <th>Durum</th>
+        <th>Düzenle</th>
+
+
+       
+    </tr>
+   
+        @foreach(var item in Model)
+        {
+            number++;
+        <tr>
+            <th>@number</th>
+            <td>@item.Name</td>
+            <td>@item.Mail</td>
+            <td>@item.Subject</td>
+            <td>@item.MessageBody.Substring(0,10)</td>
+            <td>@(((DateTime)item.MessageDate).ToString("dd-MMM-yyyy"))</td>
+           @{
+    if (item.IsDeleted == true)
+    {
+        
+                    <td><a href="/Admin/ContactUs/ChangeToIsDeleted/@item.Id" class="btn btn-outline-success">Pasif Yap</a></td>
+
+    }
+    else
+    {
+        
+                    <td><a href="/Admin/ContactUs/ChangeToIsDeleted/@item.Id" class="btn btn-outline-warning">Aktif Yap</a></td>
+
+    }
+}
+            <td><a href="#" class="btn btn-info">Düzenle</a>|<a href="#" class="btn btn-danger">Sil</a></td>
+           
+        </tr>
+        }
+        
+   
+</table>
+
+
