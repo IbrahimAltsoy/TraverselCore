@@ -4,6 +4,8 @@ using DataAccessLayer;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concreate;
 using EntityLayer.Concreate;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using NToastNotify;
 using Serilog;
@@ -21,7 +23,9 @@ builder.Services.AddControllersWithViews()
         TimeOut = 3000
 
     });
-// Buradan balýyor
+//builder.Services.AddControllersWithViews().AddFluentValidation();
+
+// Buradan balýyor 
 
 Logger log = new LoggerConfiguration()
     .WriteTo.Console()
@@ -39,6 +43,7 @@ builder.Services.AddTransient(typeof(ICommentService), typeof(CommentService));
 builder.Services.AddTransient(typeof(IExcelService), typeof(ExcelService));//Excel servisi içðin ekledik
 builder.Services.AddTransient(typeof(IPdfReportService), typeof(PdfReportService));// Pdf servisi için inþa ettik
 builder.Services.AddTransient(typeof(IContactUsService), typeof(ContactUsService));//silinmeyen mesajlar için oluþturduðumuz servistir. 
+builder.Services.AddAutoMapper(typeof(Program));// AutoMapper için eklendi 
 
 //Identity yapýlandýrmasý 
 builder.Services.AddIdentity<AppUser, AppRole>(option =>

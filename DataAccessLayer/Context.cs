@@ -25,6 +25,7 @@ namespace DataAccessLayer
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<ContactUs> ContactUses { get; set; }
+        public DbSet<Announcement> Announcements { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
