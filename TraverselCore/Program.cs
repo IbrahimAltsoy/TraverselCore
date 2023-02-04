@@ -1,11 +1,13 @@
 using BusiinessLayer.Abstract;
 using BusiinessLayer.Contcreate;
+using BusiinessLayer.ValidationRules;
 using DataAccessLayer;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concreate;
+using DtoLayer.DTOs.AnnouncementDTOs;
 using EntityLayer.Concreate;
+using FluentValidation;
 using FluentValidation.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using NToastNotify;
 using Serilog;
@@ -23,7 +25,8 @@ builder.Services.AddControllersWithViews()
         TimeOut = 3000
 
     });
-//builder.Services.AddControllersWithViews().AddFluentValidation();
+  
+builder.Services.AddControllersWithViews().AddFluentValidation();// Validation iþleme girmesi için önce burayý sonra aþaðýda AddDto için eklenemsi gerekir.
 
 // Buradan balýyor 
 
@@ -43,8 +46,9 @@ builder.Services.AddTransient(typeof(ICommentService), typeof(CommentService));
 builder.Services.AddTransient(typeof(IExcelService), typeof(ExcelService));//Excel servisi içðin ekledik
 builder.Services.AddTransient(typeof(IPdfReportService), typeof(PdfReportService));// Pdf servisi için inþa ettik
 builder.Services.AddTransient(typeof(IContactUsService), typeof(ContactUsService));//silinmeyen mesajlar için oluþturduðumuz servistir. 
-builder.Services.AddAutoMapper(typeof(Program));// AutoMapper için eklendi 
 
+builder.Services.AddTransient<IValidator<AnnouncementAddDTO>, AnnouncementValidator >();// burada da validasyonlarý saðlasýn diye yazdýk. 
+builder.Services.AddAutoMapper(typeof(Program));// AutoMapper için eklendi 
 //Identity yapýlandýrmasý 
 builder.Services.AddIdentity<AppUser, AppRole>(option =>
 {

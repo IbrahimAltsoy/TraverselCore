@@ -1,4 +1,4 @@
-﻿@model List<DtoLayer.DTOs.AnnouncementDTOs.AnnouncementListDTO>
+﻿@model List<AnnouncementListDTO>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -15,14 +15,16 @@
     </tr>
     @foreach(var item in Model)
     {
-        number++;
+        number++; 
         <tr>
             <td>@number</td>
             <td>@item.Title</td>
             <td>@item.Content</td>
-            <td><a href="#" class="btn btn-outline-info">Detaylar</a></td>
+            <td><a href="#" class="btn btn-outline-info">Detaylar</a>|<a href="/Admin/Announcement/AnnouncementDelete/@item.Id" class="btn btn-outline-danger">Sil</a>|<a href="/Admin/Announcement/AnnouncementUpdate/@item.Id" class="btn btn-outline-success">Düzenle</a></td>
         </tr>
 
     }
 </table>
 
+<br />
+<a href="/Admin/Announcement/AddAnnouncement/" class="btn btn-primary">Duyuru Ekle</a>

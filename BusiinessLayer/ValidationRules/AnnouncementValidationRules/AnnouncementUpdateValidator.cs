@@ -1,5 +1,4 @@
 ﻿using DtoLayer.DTOs.AnnouncementDTOs;
-using EntityLayer.Concreate;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -7,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusiinessLayer.ValidationRules
+namespace BusiinessLayer.ValidationRules.AnnouncementValidationRules
 {
-    public class AnnouncementValidator : AbstractValidator<AnnouncementAddDTO>
+    public class AnnouncementUpdateValidator : AbstractValidator<AnnouncementUpdateDto>
     {
-        public AnnouncementValidator()
+        public AnnouncementUpdateValidator()
         {
             RuleFor(x => x.Title)
                 .NotEmpty().WithMessage("Ad alanı boş geçilemez")
@@ -24,8 +23,6 @@ namespace BusiinessLayer.ValidationRules
                 .NotNull().WithMessage("Ad alanı boş geçilemez")
                 .MinimumLength(15).WithMessage("En az 15 karakter olmalıdır.")
                 .MaximumLength(250).WithMessage("En fazla 250 karakter olmalıdır.");
-               
         }
-
     }
 }

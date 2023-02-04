@@ -30,12 +30,53 @@ namespace TraverselCore.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> AddAnnouncement(Announcement announcement)
+        public async Task<IActionResult> AddAnnouncement(AnnouncementAddDTO announcementAddDTO)
         {
-            await _service.AddAsync(announcement);
-            await _service.SaveChangesAsync();
+            if (ModelState.IsValid)
+            {
+                var model = _service.AddAsync(new Announcement
+                {
+                    Content = announcementAddDTO.Content,
+                    Title = announcementAddDTO.Title,
+                    CreatedDate = Convert.ToDateTime(DateTime.Now.ToShortDateString())
+                }) ;
+                await _service.SaveChangesAsync();
+                return RedirectToAction("/Admin/Announcement/Index/");
+            }
 
-            return View();
+            return View(announcementAddDTO);
+        }
+    
+        public async Task<IActionResult> AnnouncementDelete(Guid id)
+        {
+            var model =await _service.FindAsync(id);
+            _service.Delete(model);
+            await _service.SaveChangesAsync();
+            return RedirectToAction("/Admin/Comment/Index/");
+        }
+        [HttpGet]
+        public async Task<IActionResult> AnnouncementUpdate(Guid id)
+        {
+            var model = _mapper.Map<AnnouncementUpdateDto>(await _service.FindAsync(id));
+            int x = 5;
+            return View(model);
+        }
+        [HttpPost]      
+        public async Task<IActionResult> AnnouncementUpdate(AnnouncementUpdateDto updateDto)
+        {
+            if (ModelState.IsValid)
+            {
+                 _service.Update(new Announcement
+                {
+                     Id= updateDto.Id,
+                    Content = updateDto.Content,
+                    Title = updateDto.Title,
+                    CreatedDate = Convert.ToDateTime(DateTime.Now.ToShortDateString())
+                    
+                });
+                await _service.SaveChangesAsync();
+            }
+            return RedirectToAction("/Admin/Comment/Index/");
         }
     }
 }
