@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TraverselAPI.DAL.Context;
@@ -6,6 +7,7 @@ using TraverselAPI.DAL.Entities;
 
 namespace TraverselAPI.Controllers
 {
+    [EnableCors]// Corsu bu controllere eklemiş olduk
     [Route("api/[controller]")]
     [ApiController]
     public class VisitorController : ControllerBase
@@ -81,14 +83,7 @@ namespace TraverselAPI.Controllers
                     return BadRequest();
                 }
             }
-            //var kayit = _service.Find(id);
-            //if (kayit == null)
-            //{
-            //    return BadRequest();
-            //}
-            //_service.Delete(kayit);
-            //_service.SaveChanges();
-            //return StatusCode(StatusCodes.Status200OK);
+            
         }
     }
 }

@@ -13,6 +13,7 @@ using NToastNotify;
 using Serilog;
 using Serilog.Core;
 using System;
+using System.Text.Json.Serialization;
 using TraverselCore.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -46,6 +47,7 @@ builder.Services.AddTransient(typeof(ICommentService), typeof(CommentService));
 builder.Services.AddTransient(typeof(IExcelService), typeof(ExcelService));//Excel servisi içðin ekledik
 builder.Services.AddTransient(typeof(IPdfReportService), typeof(PdfReportService));// Pdf servisi için inþa ettik
 builder.Services.AddTransient(typeof(IContactUsService), typeof(ContactUsService));//silinmeyen mesajlar için oluþturduðumuz servistir. 
+builder.Services.AddHttpClient();// Burasý TraverselCoreApi projesinden gelecek olan isteði karþýlayacaðýmýz alandýr. 
 
 builder.Services.AddTransient<IValidator<AnnouncementAddDTO>, AnnouncementValidator >();// burada da validasyonlarý saðlasýn diye yazdýk. 
 builder.Services.AddAutoMapper(typeof(Program));// AutoMapper için eklendi 

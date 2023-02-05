@@ -1,0 +1,33 @@
+﻿@model List<VisitorViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int number = 0;
+}
+
+<h1>Api Projesşnde Verileri Listeleme Sayfasına Hoşgeldiniz</h1>
+
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Ad</th>
+        <th>Soyad</th>
+        <th>Şehir</th>
+        <th>Ülke</th>
+        <th>Mail</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        number++;
+        <tr>
+            <td>@number</td>
+            <td>@item.Name</td>
+            <td>@item.Surname</td>
+            <td>@item.City</td>
+            <td>@item.Country</td>
+            <td>@item.Mail</td>
+        </tr>
+    }
+</table>
+<a href="/VisitorApi/AddVisitor/" class="btn btn-primary">Misafir Ekle</a>
