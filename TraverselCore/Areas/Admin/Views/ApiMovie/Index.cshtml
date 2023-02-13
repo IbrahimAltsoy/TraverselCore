@@ -1,0 +1,31 @@
+﻿@model List<TraverselCore.Areas.Admin.Models.ApiMovieViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<h1>Api Film Listesi</h1>
+<table>
+    <tr>
+        <th>#</th>
+        <th>Film Adı</th>
+        <th>Imdb Puanı</th>
+        <th>Yapım Yılı</th>
+        <th>Fragman</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@item.rank</th>
+            <th>@item.title</th>
+            <th>@item.rating</th>
+            <th>@item.year</th>
+            <th><a href="#" class="btn btn-info">Fragman</a></th>
+        </tr>
+        
+    }
+
+</table>
+

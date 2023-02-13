@@ -1,0 +1,29 @@
+﻿@model IEnumerable<TraverselCore.Areas.Admin.Models.BookingExchangeViewModel2.Exchange_Rates>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<h1>Kur Bilgisi Sayfasına Hoşgeldiniz</h1>
+<table>
+    <tr>
+        <th>#</th>
+        <th>Kur Adı</th>
+        <th>Kur Oranı</th>
+        
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <th>@item.currency</th>
+            <td>@item.exchange_rate_buy</td>           
+           
+        </tr>
+
+    }
+
+</table>
