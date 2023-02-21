@@ -50,7 +50,9 @@ builder.Services.AddTransient(typeof(IPdfReportService), typeof(PdfReportService
 builder.Services.AddTransient(typeof(IContactUsService), typeof(ContactUsService));//silinmeyen mesajlar için oluþturduðumuz servistir. 
 builder.Services.AddTransient<GetAllDestinationQueryHandler>();// Cors iþlemlerinde DEstination için kurduðumuz alan içindir.
 builder.Services.AddTransient<GetDestinationByIdQueryHandler>();// 
-builder.Services.AddTransient<CreateDestinationCommandHandler>();// 
+builder.Services.AddTransient<CreateDestinationCommandHandler>();//
+builder.Services.AddTransient<RemoveDestinationcommandHandler>();
+builder.Services.AddTransient<UpdateDestinationCommandHandler>();
 builder.Services.AddHttpClient();// Burasý TraverselCoreApi projesinden gelecek olan isteði karþýlayacaðýmýz alandýr. 
 
 builder.Services.AddTransient<IValidator<AnnouncementAddDTO>, AnnouncementValidator >();// burada da validasyonlarý saðlasýn diye yazdýk. 

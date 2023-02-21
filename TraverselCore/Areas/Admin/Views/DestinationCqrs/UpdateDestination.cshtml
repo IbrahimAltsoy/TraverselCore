@@ -1,0 +1,24 @@
+﻿@model UpdateDestinationCommand
+@{
+    ViewData["Title"] = "UpdateDestination";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>UpdateDestination</h1>
+
+<h1>Rezervasyon düzenleme Sayfasına hoşgeldiniz (CQRS)</h1>
+<form method="post">
+    <input type="hidden" asp-for="Id" class="form-control" />
+    <label>Şehir</label>
+    <input type="text" asp-for="City" class="form-control" />
+    <br />
+    <label>Gece-Gündüz Süresi</label>
+    <input type="text" asp-for="DayNight" class="form-control" />
+    <br />
+    <label>Ücret bilgisi</label>
+    <input type="text" asp-for="Price" class="form-control" />
+    <br />
+    
+    <button class="btn btn-primary">Güncelle</button>
+</form>
+<a href="/Admin/DestinationCqrs/Index/">Listeye Dön</a>
