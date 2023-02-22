@@ -1,0 +1,30 @@
+﻿@model List<GetAllGuideQueryResult>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<h1>MediatR Misafir lsiteleme Sayfasına Hoşgeldiniz</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <td>#</td>
+        <td>Ad Soyad</td>
+        <td>Açıklma</td>
+        <td>Fotoğraf</td>
+        <td>İşlemler</td>
+    </tr>
+    @foreach(var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <th>@item.Name</th>
+            <th>@item.Description</th>
+            <th>@item.Image</th>
+            <th><a href="#" class="btn btn-warning">Sil</a>| <a href="/Admin/GuideMediarT/GetGuides/@item.Id/" class="btn btn-info">Güncelle</a></th>
+        </tr>
+    }
+</table>
+<a href="/Admin/GuideMediatR/AddGuide/" class="btn btn-primary">Ekle</a>

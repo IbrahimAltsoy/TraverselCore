@@ -8,6 +8,7 @@ using DtoLayer.DTOs.AnnouncementDTOs;
 using EntityLayer.Concreate;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.AspNetCore.Identity;
 using NToastNotify;
 using Serilog;
@@ -53,6 +54,8 @@ builder.Services.AddTransient<GetDestinationByIdQueryHandler>();//
 builder.Services.AddTransient<CreateDestinationCommandHandler>();//
 builder.Services.AddTransient<RemoveDestinationcommandHandler>();
 builder.Services.AddTransient<UpdateDestinationCommandHandler>();
+builder.Services.AddMediatR(typeof(Program));// MediatR için kullanýlan alandýr. 
+
 builder.Services.AddHttpClient();// Burasý TraverselCoreApi projesinden gelecek olan isteði karþýlayacaðýmýz alandýr. 
 
 builder.Services.AddTransient<IValidator<AnnouncementAddDTO>, AnnouncementValidator >();// burada da validasyonlarý saðlasýn diye yazdýk. 
