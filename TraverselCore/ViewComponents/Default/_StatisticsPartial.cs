@@ -1,4 +1,4 @@
-﻿using DataAccessLayer;
+﻿using BusiinessLayer;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TraverselCore.ViewComponents.Default

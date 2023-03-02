@@ -1,9 +1,9 @@
 using BusiinessLayer.Abstract;
 using BusiinessLayer.Contcreate;
 using BusiinessLayer.ValidationRules;
-using DataAccessLayer;
-using DataAccessLayer.Abstract;
-using DataAccessLayer.Concreate;
+using BusiinessLayer;
+using BusiinessLayer.Abstract;
+using BusiinessLayer.Concreate;
 using DtoLayer.DTOs.AnnouncementDTOs;
 using EntityLayer.Concreate;
 using FluentValidation;

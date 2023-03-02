@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using TraverselCore.CORS.Queries.GuideQueries;
 using TraverselCore.CORS.Results.GuideResult;
-using DataAccessLayer;
+using BusiinessLayer;
 using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace TraverselCore.CORS.Handlers.GuideHandlers

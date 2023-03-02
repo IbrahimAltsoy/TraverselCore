@@ -1,6 +1,6 @@
 ﻿using BusiinessLayer.Abstract;
-using DataAccessLayer;
-using DataAccessLayer.Concreate;
+using BusiinessLayer;
+using BusiinessLayer.Concreate;
 using EntityLayer.Concreate;
 using System;
 using System.Collections.Generic;

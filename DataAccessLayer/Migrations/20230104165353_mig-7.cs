@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace DataAccessLayer.Migrations
+namespace BusiinessLayer.Migrations
 {
     /// <inheritdoc />
     public partial class mig7 : Migration

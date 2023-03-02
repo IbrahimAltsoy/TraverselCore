@@ -1,4 +1,4 @@
-﻿using DataAccessLayer.Abstract;
+﻿using BusiinessLayer.Abstract;
 using EntityLayer.Concreate;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Concreate
+namespace BusiinessLayer.Concreate
 {
     public class ContactUsRepository : Repository<ContactUs>, IContactUsRepository
     {        

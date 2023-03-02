@@ -1,5 +1,5 @@
-﻿using DataAccessLayer;
-using DataAccessLayer.Concreate;
+﻿using BusiinessLayer;
+using BusiinessLayer.Concreate;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;

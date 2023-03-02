@@ -1,4 +1,4 @@
-﻿using DataAccessLayer;
+﻿using BusiinessLayer;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using TraverselCore.CORS.Queries.GuideQueries;

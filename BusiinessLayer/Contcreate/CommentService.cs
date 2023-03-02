@@ -1,7 +1,7 @@
 ﻿using BusiinessLayer.Abstract;
-using DataAccessLayer;
-using DataAccessLayer.Abstract;
-using DataAccessLayer.Concreate;
+using BusiinessLayer;
+using BusiinessLayer.Abstract;
+using BusiinessLayer.Concreate;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,4 +1,4 @@
-﻿using DataAccessLayer;
+﻿using BusiinessLayer;
 using TraverselCore.CORS.Queries.DestinationQueries;
 using TraverselCore.CORS.Results.DestinationResults;
 

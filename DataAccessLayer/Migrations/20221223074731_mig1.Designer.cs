@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace DataAccessLayer.Migrations
+namespace BusiinessLayer.Migrations
 {
     [DbContext(typeof(Context))]
     [Migration("20221223074731_mig1")]

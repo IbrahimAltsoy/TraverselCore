@@ -1,4 +1,4 @@
-﻿using DataAccessLayer.Abstract;
+﻿using BusiinessLayer.Abstract;
 using EntityLayer.Concreate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -10,7 +10,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Concreate
+namespace BusiinessLayer.Concreate
 {
     public class Repository<T> : IRepository<T> where T : class, IEntity, new()
     {

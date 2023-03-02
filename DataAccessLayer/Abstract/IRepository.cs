@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EntityLayer.Concreate;
 
-namespace DataAccessLayer.Abstract
+namespace BusiinessLayer.Abstract
 {
     public interface IRepository<T> where T : class// IRepository interface i Entity lerimiz için gerçekleştireceğimiz veritabanı işlemlerini yapacak olan Repository class ında bulunması gereken metotların imzalarını tutuyor. <T> kodu bu interface e dışarıdan parametre olarak generic bir nesnesinin gönderilebilmesini sağlar. where T : class kodu ise T nin tipinin class olması gerektiğini belirler, böylece string gibi bir veri gönderilmeye kalkılırsa interface bunu kabul etmeyecektir.
 

@@ -1,6 +1,6 @@
 ﻿using BusiinessLayer.Abstract;
 using BusiinessLayer.ValidationRules;
-using DataAccessLayer;
+using BusiinessLayer;
 //using DocumentFormat.OpenXml.Presentation;
 using EntityLayer.Concreate;
 using FluentValidation.Results;

@@ -1,4 +1,4 @@
-﻿using DataAccessLayer;
+﻿using BusiinessLayer;
 using EntityLayer.Concreate;
 using MediatR;
 using TraverselCore.CORS.Commands.GuideCommands;
