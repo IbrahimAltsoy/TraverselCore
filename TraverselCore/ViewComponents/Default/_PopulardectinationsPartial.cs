@@ -6,8 +6,8 @@ namespace TraverselCore.ViewComponents.Default
 {
     public class _PopulardectinationsPartial :ViewComponent
     {
-        private readonly IService<Destination> _service;
-        public _PopulardectinationsPartial(IService<Destination> service)
+        private readonly IService<EntityLayer.Concreate.Destination> _service;
+        public _PopulardectinationsPartial(IService<EntityLayer.Concreate.Destination> service)
         {
             this._service = service;
         }

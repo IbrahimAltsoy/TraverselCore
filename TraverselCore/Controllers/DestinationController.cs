@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TraverselCore.Controllers
 {
-	[Authorize]
+	[AllowAnonymous]
 	public class DestinationController : Controller
     {
         private readonly IService<Destination> _service;

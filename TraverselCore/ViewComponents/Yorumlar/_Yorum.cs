@@ -5,10 +5,10 @@ namespace TraverselCore.ViewComponents.Yorumlar
 {
     public class _Yorum :ViewComponent
     {
-        private readonly IService<Destination> _service;
+        private readonly IService<EntityLayer.Concreate.Destination> _service;
         private readonly IService<Comment> _service1;
 
-        public _Yorum(IService<Destination> service, IService<Comment> service1)
+        public _Yorum(IService<EntityLayer.Concreate.Destination> service, IService<Comment> service1)
         {
             this._service = service;
             this._service1 = service1;
