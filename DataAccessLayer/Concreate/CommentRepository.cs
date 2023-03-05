@@ -19,8 +19,13 @@ namespace BusiinessLayer.Concreate
         public async Task<IEnumerable<Comment>> GetAllCommentWithDestinationAsync()
         {
             return await context.Comments.Include(d=>d.Destination).AsTracking().ToListAsync();
-           // return await context.Products.Include(c => c.Category).Include(b => b.Brand).ToListAsync();
+           
         }
-        
+        public async Task<List<Comment>> GetAllCommentWithDestinationAndUserAsync(Guid id)
+        {
+            return await context.Comments.Where(d => d.DestinationId == id).Include(d => d.AppUser).ToListAsync(); 
+           
+        }
+
     }
 }

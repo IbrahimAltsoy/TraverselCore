@@ -18,5 +18,9 @@ namespace EntityLayer.Concreate
 
         public Destination Destination { get; set; }
 
+        public Guid AppUserId { get; set; }
+
+        public AppUser AppUser { get; set; }
+
     }
 }

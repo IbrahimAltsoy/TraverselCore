@@ -11,5 +11,6 @@ namespace BusiinessLayer.Abstract
     public interface ICommentRepository: IRepository<Comment>
     {
         Task<IEnumerable<Comment>> GetAllCommentWithDestinationAsync();
+        Task<List<Comment>> GetAllCommentWithDestinationAndUserAsync(Guid id);
     }
 }

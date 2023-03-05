@@ -1,5 +1,6 @@
 ﻿using BusiinessLayer.Abstract;
 using EntityLayer.Concreate;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TraverselCore.Controllers
@@ -8,33 +9,35 @@ namespace TraverselCore.Controllers
     {
         private readonly IService<Destination> _service1;
         private readonly IService<Comment> _service2;
+        
+
+        
 
         public CommentController(IService<Destination> service1, IService<Comment> service2)
         {
             _service1 = service1;
             _service2 = service2;
+           
 
         }
         [HttpGet]
-        public PartialViewResult AddComment()
-        {
+        public async Task<PartialViewResult> AddComment()
+        {                     
             return PartialView();
         }
         [HttpPost]
         public async Task<IActionResult> AddComment(Comment comment)
         {
-            comment.DateTime = Convert.ToDateTime(DateTime.Now);
-            comment.Id = Guid.NewGuid();
-            //comment.DestinationId = Guid.Parse("463edb75-7b0e-4770-891c-6a3f3fb847d7");
-            comment.Status = true;
-            //comment.User = user;
-            //comment.Content = content;, string user, string content
-
-
-
-            await _service2.AddAsync(comment);
-            await _service2.SaveChangesAsync();
-            return RedirectToAction("Index", "Destination");
+            //User.Identity.IsAuthenticated
+              comment.DateTime = Convert.ToDateTime(DateTime.Now);
+                comment.Id = Guid.NewGuid();               
+                comment.Status = true;             
+                await _service2.AddAsync(comment);
+                await _service2.SaveChangesAsync();
+                int a = 5;
+                return RedirectToAction("Index", "Destination");
+            
+            
         }
     }
 }
