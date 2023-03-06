@@ -17,8 +17,7 @@ namespace TraverselCore.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var model =await _service.GetAllAsync(x=>x.Statu==false);
-            int a = 5;
+            var model =await _service.GetAllAsync(x=>x.Statu==false);            
             return View(model);
         }
     }
