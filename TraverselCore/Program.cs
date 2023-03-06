@@ -2,7 +2,6 @@ using BusiinessLayer.Abstract;
 using BusiinessLayer.Contcreate;
 using BusiinessLayer.ValidationRules;
 using BusiinessLayer;
-using BusiinessLayer.Abstract;
 using BusiinessLayer.Concreate;
 using DtoLayer.DTOs.AnnouncementDTOs;
 using EntityLayer.Concreate;
@@ -13,10 +12,10 @@ using Microsoft.AspNetCore.Identity;
 using NToastNotify;
 using Serilog;
 using Serilog.Core;
-using System;
-using System.Text.Json.Serialization;
 using TraverselCore.CORS.Handlers.DestinationHandlers;
 using TraverselCore.Models;
+using DtoLayer.DTOs.ContactDTOs;
+using BusiinessLayer.ValidationRules.ContactUsValidator;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -59,6 +58,7 @@ builder.Services.AddMediatR(typeof(Program));// MediatR için kullanýlan alandýr.
 builder.Services.AddHttpClient();// Burasý TraverselCoreApi projesinden gelecek olan isteði karþýlayacaðýmýz alandýr. 
 
 builder.Services.AddTransient<IValidator<AnnouncementAddDTO>, AnnouncementValidator >();// burada da validasyonlarý saðlasýn diye yazdýk. 
+builder.Services.AddTransient<IValidator<SendMessageDto>, SendContactValidator>();
 builder.Services.AddAutoMapper(typeof(Program));// AutoMapper için eklendi 
 //Identity yapýlandýrmasý 
 builder.Services.AddIdentity<AppUser, AppRole>(option =>

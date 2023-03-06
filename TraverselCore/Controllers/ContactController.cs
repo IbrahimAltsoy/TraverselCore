@@ -3,6 +3,7 @@ using BusiinessLayer.Abstract;
 using DocumentFormat.OpenXml.Wordprocessing;
 using DtoLayer.DTOs.ContactDTOs;
 using EntityLayer.Concreate;
+using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NToastNotify;
@@ -16,13 +17,15 @@ namespace TraverselCore.Controllers
         private readonly IService<ContactUs> _service;
         private readonly IMapper _mapper;
         private readonly IToastNotification _toastNotification;
+        private readonly IValidator<SendMessageDto> _validator;
 
 
-        public ContactController(IService<ContactUs> service, IMapper mapper, IToastNotification toastNotification)
+        public ContactController(IService<ContactUs> service, IMapper mapper, IToastNotification toastNotification, IValidator<SendMessageDto> validator)
         {
             _service = service;
             _mapper = mapper;
             _toastNotification = toastNotification;
+            _validator = validator;
         }
         [HttpGet]
         public IActionResult Index()
@@ -32,7 +35,8 @@ namespace TraverselCore.Controllers
         [HttpPost]
         public IActionResult Index(SendMessageDto send)
         {
-            if (ModelState.IsValid)
+            var result = _validator.Validate(send);
+            if (result.IsValid)
             {
                _service.Add(new ContactUs()
                 {
@@ -52,6 +56,7 @@ namespace TraverselCore.Controllers
                 return RedirectToAction(nameof(Index));
 
             }
+
             return View(send);
         }
     }
