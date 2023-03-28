@@ -38,9 +38,9 @@ namespace BusiinessLayer
             base.OnModelCreating(modelBuilder);
         }
 
-        internal Task<IEntity> FindAsync(Guid id)
-        {
-            throw new NotImplementedException();
-        }
+        //internal Task<IEntity> FindAsync(Guid id)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
