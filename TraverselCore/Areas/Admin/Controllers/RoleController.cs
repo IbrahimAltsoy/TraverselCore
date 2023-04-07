@@ -10,10 +10,12 @@ namespace TraverselCore.Areas.Admin.Controllers
     public class RoleController : Controller
     {
         private readonly RoleManager<AppRole> _roleManager;
+        private readonly UserManager<AppUser> _userManager;
 
-        public RoleController(RoleManager<AppRole> roleManager)
+        public RoleController(RoleManager<AppRole> roleManager, UserManager<AppUser> userManager)
         {
             _roleManager = roleManager;
+            _userManager = userManager;
         }
         [Route("Index")]
         public IActionResult Index()
@@ -83,6 +85,32 @@ namespace TraverselCore.Areas.Admin.Controllers
             await _roleManager.UpdateAsync(value);
             return RedirectToAction(nameof(Index)); 
 
+        }
+        [HttpGet]
+        [Route("User")]
+        public IActionResult User()
+        {
+            var model = _userManager.Users.ToList();
+            return View(model);
+        }
+        [HttpPost]
+        [Route("Assign/{id}")]
+        public async Task<IActionResult> AssingRole(Guid id)
+        {
+            var user = _userManager.Users.FirstOrDefault(x => x.Id == id);
+            var roles = _roleManager.Roles.ToList();
+            var userRoles = await _userManager.GetRolesAsync(user);
+            List<RoleAssingViewModel> roleAssingViewModels= new List<RoleAssingViewModel>();
+            foreach(var role in roles)
+            {
+                RoleAssingViewModel model = new RoleAssingViewModel();
+                model.Id = role.Id;
+                model.Name = role.Name;
+                model.RoleExist = userRoles.Contains(role.Name);
+                roleAssingViewModels.Add(model);
+            }
+
+            return View();
         }
     }
 }
