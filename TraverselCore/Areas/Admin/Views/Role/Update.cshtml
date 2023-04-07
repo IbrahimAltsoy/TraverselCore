@@ -1,0 +1,16 @@
+﻿@model UpdateRoleViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<h1>Role Listesi Sayfasına Hoşgeldiniz</h1>
+<form method="post">
+    <input type="hidden" asp-for="Id"/>
+    <label>Role ismini giriniz</label>
+    <input type="text" asp-for="Name" class="form-control"/>
+    <br />
+    <button class="btn btn-primary">Güncelle</button>
+</form>
+ 
