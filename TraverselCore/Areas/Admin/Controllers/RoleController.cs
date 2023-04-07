@@ -118,10 +118,9 @@ namespace TraverselCore.Areas.Admin.Controllers
         [Route("AssingRole/{id}")]
         public async Task<IActionResult> AssingRole(List<RoleAssingViewModel> models)
         {
-            string userId =TempData["userId"].ToString();
-            int a = 5;
+            string userId =TempData["userId"].ToString();          
             Guid id = new Guid(userId);
-            int b = 6;
+         
 
             var user = _userManager.Users.FirstOrDefault(x => x.Id == id);
             foreach(var model in models)
