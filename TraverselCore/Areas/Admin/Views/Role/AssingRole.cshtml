@@ -1,40 +1,20 @@
-﻿@model List<AppRole>
+﻿@model List<RoleAssingViewModel>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "AssingRole";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     int count = 0;
 }
 
-<h1>Role Listesi Sayfasına Hoşgeldiniz</h1>
- @if(Model.Count>0){
-<table class="table table-bordered">
-
-    <tr>
-        <th>#</th>
-        <th>Role Adı</th>
-        <th>Sil</th>
-        <th>Güncelle</th>
-    </tr>
-   
-    @foreach(var item in Model)
+<h1>Role Atama Sayfasına Hoşgeldiniz</h1>
+<form method="post">
+    @for(int i =0; i<Model.Count; i++)
     {
-        count++;
-        <tr>
-            <td>@count</td>
-            <td>@item.Name</td>
-            <td><a href="/Admin/Role/Delete/@item.Id" class="btn btn-danger">Sil</a></td>
-                <td><a href="/Admin/Role/Update/@item.Id" class="btn btn-info">Güncelle</a></td>
-            
-        </tr>
+        <div class="form-check">
+            <input type="hidden" asp-for="@Model[i].Id" />
+            <input type="hidden" asp-for="@Model[i].Name" />
+            <input type="checkbox" asp-for="@Model[i].RoleExist" class="form-check-input"/>
+            <label class="form-check-label" for="@Model[i].RoleExist">@Model[i].Name</label>
+        </div>
     }
-  
-   
-</table>
-}
-else
-{
-            <div>
-        <p class ="alert-info">Herhangi bir rol bulunamadı</p>
-            </div>
-}
-<a href="/Admin/Role/Create/" class="btn btn-primary">Rol Ekle</a>
+    <button class="btn btn-primary">Kaydet</button>
+</form>

@@ -1,6 +1,7 @@
 ﻿using EntityLayer.Concreate;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using TraverselCore.Areas.Admin.Models;
 
 namespace TraverselCore.Areas.Admin.Controllers
@@ -93,11 +94,12 @@ namespace TraverselCore.Areas.Admin.Controllers
             var model = _userManager.Users.ToList();
             return View(model);
         }
-        [HttpPost]
-        [Route("Assign/{id}")]
+        [HttpGet]
+        [Route("AssingRole/{id}")]
         public async Task<IActionResult> AssingRole(Guid id)
         {
             var user = _userManager.Users.FirstOrDefault(x => x.Id == id);
+            TempData["userid"] = user.Id;
             var roles = _roleManager.Roles.ToList();
             var userRoles = await _userManager.GetRolesAsync(user);
             List<RoleAssingViewModel> roleAssingViewModels= new List<RoleAssingViewModel>();
@@ -110,7 +112,30 @@ namespace TraverselCore.Areas.Admin.Controllers
                 roleAssingViewModels.Add(model);
             }
 
-            return View();
+            return View(roleAssingViewModels);
+        }
+        [HttpPost]
+        [Route("AssingRole/{id}")]
+        public async Task<IActionResult> AssingRole(List<RoleAssingViewModel> models)
+        {
+            string userId =TempData["userId"].ToString();
+            int a = 5;
+            Guid id = new Guid(userId);
+            int b = 6;
+
+            var user = _userManager.Users.FirstOrDefault(x => x.Id == id);
+            foreach(var model in models)
+            {
+                if (model.RoleExist)
+                {
+                    await _userManager.AddToRoleAsync(user, model.Name);
+                }
+                else
+                {
+                    await _userManager.RemoveFromRoleAsync(user, model.Name);
+                }
+            }
+            return RedirectToAction("User");
         }
     }
 }
