@@ -16,7 +16,7 @@ using TraverselCore.CORS.Handlers.DestinationHandlers;
 using TraverselCore.Models;
 using DtoLayer.DTOs.ContactDTOs;
 using BusiinessLayer.ValidationRules.ContactUsValidator;
-
+//zeynep@gmail.com þifre Zeynep01.
 var builder = WebApplication.CreateBuilder(args);
 
 
