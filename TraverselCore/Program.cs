@@ -17,6 +17,8 @@ using TraverselCore.Models;
 using DtoLayer.DTOs.ContactDTOs;
 using BusiinessLayer.ValidationRules.ContactUsValidator;
 //zeynep@gmail.com þifre Zeynep01.
+// altsoyibrahim01@gmail.com þifre Ibrahim02.
+
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -67,7 +69,7 @@ builder.Services.AddIdentity<AppUser, AppRole>(option =>
 	option.Password.RequireLowercase = true;
     option.Password.RequireUppercase = true;
 })
-	.AddRoleManager<RoleManager<AppRole>>().AddEntityFrameworkStores<Context>().AddDefaultTokenProviders().AddErrorDescriber<CustomIdentityValidator>();
+	.AddRoleManager<RoleManager<AppRole>>().AddTokenProvider<DataProtectorTokenProvider<AppUser>>(TokenOptions.DefaultProvider).AddEntityFrameworkStores<Context>().AddDefaultTokenProviders().AddErrorDescriber<CustomIdentityValidator>();
 
 
 var app = builder.Build();
